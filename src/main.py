@@ -11,7 +11,7 @@ def index():
 
 @app.route('/process', methods=['POST'])
 def process():
-    youtube_link = request.form['youtube_link']
+    youtube_link = request.form['youtube_link'] # 
     video_result = process_video(youtube_link)
     text_result = process_text(video_result)
     langchain_instance = initialize_langchain()
@@ -20,6 +20,8 @@ def process():
     gr_interface_result = get_response(input_text, langchain_instance)
 
     return render_template('result.html', result=gr_interface_result)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
